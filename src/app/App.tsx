@@ -9,21 +9,32 @@ import { Contact } from '@/app/components/Contact';
 import { Footer } from '@/app/components/Footer';
 import { ScrollToTop } from '@/app/components/ScrollToTop';
 import { CursorFollower } from '@/app/components/CursorFollower';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NotFoundPage from '@/app/components/NotFoundPage';
+
+const MainContent = () => (
+  <div className="min-h-screen bg-white">
+    <CursorFollower />
+    <Navigation />
+    <Hero />
+    <About />
+    <Skills />
+    <Projects />
+    <Experience />
+    <Testimonials />
+    <Contact />
+    <Footer />
+    <ScrollToTop />
+  </div>
+);
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <CursorFollower />
-      <Navigation />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Testimonials />
-      <Contact />
-      <Footer />
-      <ScrollToTop />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainContent />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Router>
   );
 }
